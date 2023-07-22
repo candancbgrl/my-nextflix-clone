@@ -1,8 +1,8 @@
-import useSwr from 'swr'
-import fetcher from '@/lib/fetcher';
+import useSwr from "swr";
+import fetcher from "@/lib/fetcher";
 
 const useRandomMovie = () => {
-  const { data, error, isLoading } = useSwr('/api/random', fetcher, {
+  const { data, error, isLoading } = useSwr("/api/random", fetcher, {
     revalidateIfStale: false,
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
@@ -10,8 +10,8 @@ const useRandomMovie = () => {
   return {
     data,
     error,
-    isLoading
-  }
+    isLoading,
+  };
 };
 
 export default useRandomMovie;

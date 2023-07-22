@@ -20,17 +20,17 @@ model User {
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
   sessions       Session[]
-  account        Account[] // birden fazla account olabilir.
+  account        Account[] 
   favoritesId    String[]  @db.ObjectId
   children       Child[]
 }
 
 model Child {
-  id     String @id @default(auto()) @map("_id") @db.ObjectId
-  name   String
-  userId String @db.ObjectId
-  favoritesId    String[]  @db.ObjectId
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  userId      String   @db.ObjectId
+  favoritesId String[] @db.ObjectId
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Movie {
@@ -43,17 +43,16 @@ model Movie {
   duration     String
 }
 
-// Zorunlu olanlar(!)
-//Kullanıcının hesapları 
+
 model Account {
   id                String  @id @default(auto()) @map("_id") @db.ObjectId
   userId            String  @db.ObjectId
   type              String
   provider          String
-  providerAccountId String // Account'ın sağlayıcısı tarafından atanan bir id.
+  providerAccountId String 
   refresh_token     String? @db.String
   access_token      String? @db.String
-  expires_at        Int? // token' ın sona erme süresini belli eder.
+  expires_at        Int? 
   token_type        String?
   scope             String?
   id_token          String? @db.String
