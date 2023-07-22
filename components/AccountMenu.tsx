@@ -18,9 +18,10 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
     const { childUsername } = router.query;
 
     
-
+    const routeCurrentUserHome = useCallback(() => {
+        router.push('/');
+    }, [router]);
     const routeHome = useCallback((childUsername: any) => {
-       
         router.push({
             pathname:'/',
             query:{childUsername}
@@ -32,21 +33,21 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
             <div className="flex flex-col gap-3">
                 <div className="px-3 group/item flex flex-row gap-3 items-center w-full">
                     <img className="w-8 rounded-md" src="/images/default-blue.png" alt="" />
-                    <p className="text-white text-sm group-hover/item:underline">{current?.name}</p>
+                    <p onClick={routeCurrentUserHome} className="text-white text-sm group-hover/item:underline">{current?.name}</p>
                 </div>
             </div>
             <hr className="bg-gray-600 border-0 h-px my-4" />
             {
                 childs?.map((item: any) => (
-                    <>
+                    item?.userId === current?.id ? <>
                         <div className="flex flex-col gap-3">
                             <div className="px-3 group/item flex flex-row gap-3 items-center w-full">
                                 <img className="w-8 rounded-md" src="/images/default-red.png" alt="" />
-                                <p onClick={()=>routeHome(item?.name)} className={item?.name === childUsername ? "text-white font-bold text-sm group-hover/item:underline" : "text-gray-500 text-sm group-hover/item:underline"}>{item?.name}</p>
+                                <p key={item?.id} onClick={()=>routeHome(item?.name)} className={item?.name === childUsername ? "text-white font-bold text-sm group-hover/item:underline" : "text-gray-500 text-sm group-hover/item:underline"}>{item?.name}</p>
                             </div>
                         </div>
                         <br />
-                    </>
+                    </> : null
                 ))
             }
             <hr className="bg-gray-600 border-0 h-px my-4" />

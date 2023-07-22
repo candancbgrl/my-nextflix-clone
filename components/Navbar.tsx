@@ -4,7 +4,6 @@ import { BsBell, BsSearch } from 'react-icons/bs'
 import { AiOutlineDown } from 'react-icons/ai'
 import MobileMenu from './MobileMenu'
 import AccountMenu from './AccountMenu'
-import MainThumb from '@/components/MainThumb'
 import useSeriesModalStore from '@/hooks/useSeriesModalStore';
 import useRandomMovie from '@/hooks/useRandomMovie';
 
@@ -52,17 +51,15 @@ const Navbar = () => {
                     <Link href="/" className="text-white hover:text-gray-300">
                         Home
                     </Link>
-                    <Link onClick={handleOpenModal} href="/" className="text-white hover:text-gray-300">
+                    <button onClick={handleOpenModal}  className="text-white hover:text-gray-300 hover:underline">
                         Series
-                    </Link> <Link href="/" className="text-white hover:text-gray-300">
+                    </button> <Link href="/films" className="text-white hover:text-gray-300 hover:underline">
                         Films
                     </Link>
-                    <Link href="/" className="text-white hover:text-gray-300">
+                    <Link href="#" className="text-white hover:text-gray-300 hover:underline">
                         New & Popular
                     </Link>
-                    <Link href="/" className="text-white hover:text-gray-300">
-                        My List
-                    </Link>
+              
                 </div>
                 <div onClick={toggleMobileMenu} className="lg:hidden flex flex-row items-center gap-2 ml-8 cursor-pointer relative">
                     <p className="text-white text-sm">Browse</p>

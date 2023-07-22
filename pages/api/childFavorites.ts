@@ -1,19 +1,21 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import serverAuth from "@/lib/serverAuth";
 import prismadb from '@/lib/prismadb';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
     try {
-        if (req.method !== 'GET') {
+        if (req.method !== 'POST') {
             return res.status(405).end();
         }
-        const { currentUser } = await serverAuth(req, res);
+        const { child } = req.body;
+
+
+        // burdan devam et, childa göre movie id leri al, movie den sorgulayıp movileri dön.
  
         const favoritesMovies = await prismadb.movie.findMany({
             where: {
                 id: {
-                    in: currentUser?.favoritesId
+                    in: child?.favoritesId
                 }
             }
         });

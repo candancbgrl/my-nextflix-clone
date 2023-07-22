@@ -2,15 +2,12 @@ import useSwr from 'swr'
 import fetcher from '@/lib/fetcher';
 
 const useChilds = () => {
-  const { data, error, isLoading } = useSwr('/api/childs', fetcher, {
-    revalidateIfStale: false,
-    revalidateOnFocus: false,
-    revalidateOnReconnect: false,
-  });
+  const { data, error, isLoading,mutate } = useSwr('/api/childs', fetcher);
   return {
     data,
     error,
-    isLoading
+    isLoading,
+    mutate
   }
 };
 

@@ -7,7 +7,7 @@ const useMovieList = (movieId?:string) => {
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
   });
-  return {
+  return { 
     data,
     error,
     isLoading

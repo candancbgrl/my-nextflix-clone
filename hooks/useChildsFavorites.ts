@@ -1,8 +1,10 @@
 import useSwr from 'swr'
 import fetcher from '@/lib/fetcher';
 
-const useFavorites = () => {
-  const { data, error, isLoading, mutate } = useSwr('/api/favorites', fetcher, {
+const useChildsFavorites = (childId?:string) => {
+
+  
+  const { data, error, isLoading, mutate } = useSwr(childId ? `/api/childFav/${childId}` : null, fetcher, {
     revalidateIfStale: false,
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
@@ -11,8 +13,8 @@ const useFavorites = () => {
     data,
     error,
     isLoading,
-    mutate
+    mutate 
   }
 };
 
-export default useFavorites;
+export default useChildsFavorites; 
