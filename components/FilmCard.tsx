@@ -9,7 +9,7 @@ const FilmCard: React.FC<FilmCardProps> = ({ data }) => {
   const router = useRouter();
   return (
     <div className="flex flex-col">
-      <div className=" h-[20rem] flex flex-row gap-6">
+      <div className=" h-[30rem] flex flex-row gap-6">
         <img
           onClick={() => router.push(`/watch/${data?.id}`)}
           className="w-1/2 brightness-[60%] rounded-2xl cursor-pointer"

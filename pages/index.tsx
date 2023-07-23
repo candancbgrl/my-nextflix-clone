@@ -11,6 +11,7 @@ import useInfoModalStore from "@/hooks/useInfoModalStore";
 import useSeriesModalStore from "@/hooks/useSeriesModalStore";
 
 import Meta from "@/components/Meta";
+import Layout from "@/layout/Layout";
 
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);
@@ -34,13 +35,14 @@ export default function Home() {
     useSeriesModalStore();
   return (
     <div className="flex flex-col ">
-      <Meta title="Netflix Home" />
-      <InfoModal visible={isInfoModalOpen} onClose={closeInfoModal} />
-      <SeriesModal visible={isSeriesModalOpen} onClose={closeSeriesModal} />
-      <Navbar />
-      <MainThumb />
-      <AllMovies />
-      <FavoritesList />
+      <Layout>
+        <Meta title="Netflix Home" />
+        <InfoModal visible={isInfoModalOpen} onClose={closeInfoModal} />
+        <SeriesModal visible={isSeriesModalOpen} onClose={closeSeriesModal} />
+        <MainThumb />
+        <AllMovies />
+        <FavoritesList />
+      </Layout>
     </div>
   );
 }

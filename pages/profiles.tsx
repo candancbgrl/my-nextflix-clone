@@ -26,12 +26,20 @@ const Profiles = () => {
   const router = useRouter();
 
   const routeHome = useCallback(
-    (childUsername: any) => {
-      router.push({
-        pathname: "/",
-        query: { childUsername },
-      });
+    
+      (childUsername: any) => {
+        if(router.query.childUsername === current?.name){
+        router.push({
+          pathname: "/",
+        });
+      }else{
+        router.push({
+          pathname: "/",
+          query: { childUsername },
+        });
+      }
     },
+    
     [router]
   );
 

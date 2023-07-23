@@ -15,7 +15,7 @@ const Movie = () => {
         muted
         loop
         controls
-        className="h-screen"
+        className="h-screen w-full"
         src={movie?.videoUrl}
       ></video>
       <p className="absolute top-0 left-0 bg-black bg-opacity-50 text-white p-4">

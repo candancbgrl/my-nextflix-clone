@@ -7,26 +7,27 @@ import SeriesModal from "@/components/SeriesModal";
 import useInfoModalStore from "@/hooks/useInfoModalStore";
 import useSeriesModalStore from "@/hooks/useSeriesModalStore";
 import Meta from "@/components/Meta";
+import Layout from "@/layout/Layout";
 
 const Films = () => {
   const { data: films, isLoading } = useMovieList();
   if (isLoading) return <div>Yükleniyor...</div>;
-  const { isOpen: isInfoModalOpen, closeModal: closeInfoModal } =
-    useInfoModalStore();
+  
   const { isOpen: isSeriesModalOpen, closeModal: closeSeriesModal } =
     useSeriesModalStore();
   return (
     <div>
-      <Meta title="Films" />
-      <SeriesModal visible={isSeriesModalOpen} onClose={closeSeriesModal} />
-      <Navbar />
+      <Layout>
+        <Meta title="Films" />
+        <SeriesModal visible={isSeriesModalOpen} onClose={closeSeriesModal} />
 
-      <div className="flex flex-col gap-6 pt-32 pl-16">
-        <div className="text-7xl">Films</div>
-        {films?.map((item: any) => (
-          <FilmCard data={item} />
-        ))}
-      </div>
+        <div className="flex flex-col gap-6 pt-32 pl-16">
+          <div className="text-7xl">Films</div>
+          {films?.map((item: any) => (
+            <FilmCard data={item} />
+          ))}
+        </div>
+      </Layout>
     </div>
   );
 };

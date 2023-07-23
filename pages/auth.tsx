@@ -60,7 +60,9 @@ const Auth = () => {
       <div className="absolute inset-0 bg-black opacity-50"></div>
       <div className="absolute h-screen flex justify-center items-center">
         <div className="px-10 py-10 bg-black bg-opacity-60 flex flex-col gap-4 rounded-xl ">
-          <div className="mt-4  text-4xl text-white mb-4">Sign in</div>
+          <div className="mt-4  text-4xl text-white mb-4">
+            {variant === "login" ? "Sign in" : "Sign up"}
+          </div>
           {variant === "register" ? (
             <Input
               id="name"

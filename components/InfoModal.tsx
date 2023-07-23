@@ -30,7 +30,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
     return null;
   }
   return (
-    <div className="z-30  flex justify-center items-center fixed px-80 py-32">
+    <div className="z-50  flex justify-center items-center fixed px-[35rem] py-[12rem]">
       <div className="relative w-auto rounded-md overflow-hidden">
         <div
           className={`${
